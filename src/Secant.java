@@ -1,14 +1,23 @@
 public class Secant extends RootMethod {
-    double xNext=0;
+    private double xNext=0;
+    private double xi=0;
+    private double xPrev=0;
+    private double functionX=0;
+    private double functionXPrev=0;
+
     //xi+1= xi -f(xi)/[(f(xi)-f(xi-1)/(xi-(xi-1)))]
     @Override
     void findRoot1() {
         //xi=boundB
         //xi-1=boundA
-        double functionX = processFunction1(boundB);
-        double functionXPrev= processFunction1(boundA);
+        functionX = processFunction1(xi);
+        functionXPrev= processFunction1(xPrev);
 
-        xNext=(boundB-functionX)/((functionX-functionXPrev)/(boundB-boundA));
+        xNext=(xi-functionX)/((functionX-functionXPrev)/(xi-xPrev));
+
+        calcError(xPrev, xi);
+
+        xPrev=xi;
         
     }
 
@@ -16,10 +25,21 @@ public class Secant extends RootMethod {
     void findRoot2() {
         //xi=boundB
         //xi-1=boundA
-        double functionX = processFunction2(boundB);
-        double functionXPrev= processFunction2(boundA);
+        functionX = processFunction2(xi);
+        functionXPrev= processFunction2(xPrev);
 
-        xNext=(boundB-functionX)/((functionX-functionXPrev)/(boundB-boundA));
+        xNext=(xi-functionX)/((functionX-functionXPrev)/(xi-xPrev));
+
+        calcError(xPrev, xi);
+
+        xPrev=xi;
+    }
+    @Override
+    void displayGraph() {
+        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
+        +" f(x): " + getFunctionX()+ " f(xi-1): "+ getFunctionXPrev());
+
+        System.out.print(" Error: "+ getError());
     }
     
     public double getxNext() {
@@ -27,5 +47,17 @@ public class Secant extends RootMethod {
     }
     public void setxNext(double xNext) {
         this.xNext = xNext;
+    }
+    public double getXi() {
+        return xi;
+    }
+    public double getxPrev() {
+        return xPrev;
+    }
+    public double getFunctionX() {
+        return functionX;
+    }
+    public double getFunctionXPrev() {
+        return functionXPrev;
     }
 }

@@ -1,15 +1,15 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class RootMethod {
     ArrayList<Integer> roots = new ArrayList<Integer>();
     protected double error = 0;
     protected double boundA=0;
     protected double boundB=0;
+    protected double iteration=0;
+    protected Boolean boundBoolean=false;
 
     //Method to process the function
     double processFunction1(double x){
-        System.out.println("f(x)=2x^3-11.7x^2+17.7x-5");
         double tempDouble=0;
 
 
@@ -21,8 +21,6 @@ public abstract class RootMethod {
 
     //Method to process the function
     double processFunction2(double x){
-        System.out.println("f(x)=x+10-xcosh(50/x)");
-
         double tempDouble=0;
 
         //case for function 2
@@ -46,10 +44,12 @@ public abstract class RootMethod {
             //root is to the left of the midpoint c
             //replace a with c
             setBoundA(c);
+            boundBoolean=true;
         }else if(functionC*functionB<0){
             //root is to the right of midpoint c
             //replace b with c
             setBoundB(c);
+            boundBoolean=false;
         }
     }
 
@@ -61,22 +61,23 @@ public abstract class RootMethod {
     }
 
     //Display the table being produced by the class
-    void displayGrapth(){
+    void displayGraph(){
 
+    }
+
+    //method to iterate
+    void iterate(){
+        iteration++;
     }
 
     //Method to detect divergent solutions
-    void stateDivergency(){
-
+    void testDivergency(){
+        System.out.println("Bound contains multiple roots. Divergency detected");
     }
 
     //Method to detect a slow convergency
-    void stateSlowConvergency(){
-
-    }
-    //Method to calculate the class's respective error
-    void methodError(){
-
+    void testSlowConvergency(){
+        System.out.println("Convergence is feasible but very slow.");
     }
 
     public double getBoundA() {
@@ -90,5 +91,11 @@ public abstract class RootMethod {
     }
     public void setBoundB(double boundB) {
         this.boundB = boundB;
+    }
+    public double getError() {
+        return error;
+    }
+    public double getIteration() {
+        return iteration;
     }
 }

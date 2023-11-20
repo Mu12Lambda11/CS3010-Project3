@@ -1,25 +1,45 @@
 public class NewtonRaphson extends RootMethod {
     private double xNext=0;
+    private double xi=0;
+    private double xPrev=0;
+    private double functionX=0;
+    private double derivativeX=0;
     
     //xi+1= xi - f(xi)/f'(xi)
     @Override
     void findRoot1() {
-        //xi=boundB
-        double functionX= processFunction1(boundB);
-        double derivativeX= processDerivative1(boundB);
+        functionX= processFunction1(xi);
+        derivativeX= processDerivative1(xi);
 
-        xNext = boundB-(functionX/derivativeX);
+        xNext = xi-(functionX/derivativeX);
+        
+        calcError(xPrev, xi);
+
+        xPrev=xi;
         
     }
 
     @Override
     void findRoot2() {
         //xi=boundB
-        double functionX= processFunction2(boundB);
-        double derivativeX= processDerivative2(boundB);
+        functionX= processFunction2(xi);
+        derivativeX= processDerivative2(xi);
 
-        xNext = boundB-(functionX/derivativeX);
+        xNext = xi-(functionX/derivativeX);
+
+        calcError(xPrev, xi);
+
+        xPrev=xi;
     }
+
+    @Override
+    void displayGraph() {
+        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
+        +" f(x): " + getFunctionX()+ " f'(x): "+ getDerivativeX());
+
+        System.out.print(" Error: "+ getError());
+    }
+
    
     double processDerivative1(double x){
         System.out.println("6x^2-23.4x+17.7");
@@ -40,8 +60,22 @@ public class NewtonRaphson extends RootMethod {
     public double getxNext() {
         return xNext;
     }
-
     public void setxNext(double xNext) {
         this.xNext = xNext;
+    }
+    public void setXi(double xi) {
+        this.xi = xi;
+    }
+    public double getXi() {
+        return xi;
+    }
+    public double getxPrev() {
+        return xPrev;
+    }
+    public double getFunctionX() {
+        return functionX;
+    }
+    public double getDerivativeX() {
+        return derivativeX;
     }
 }

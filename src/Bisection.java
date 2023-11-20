@@ -1,5 +1,8 @@
 public class Bisection extends RootMethod {
     private double c =0;
+    private double functionA=0;
+    private double functionB=0;
+    private double functionC=0;
 
     //X2 = X0 + (X1-X0)/2
     @Override
@@ -16,6 +19,9 @@ public class Bisection extends RootMethod {
         //find f(c)
         double functionC = processFunction1(c);
 
+        //calculate the error
+        calcError(boundA, boundB);
+
         compareBounds(functionA, functionB, functionC, c);
     }
 
@@ -24,24 +30,18 @@ public class Bisection extends RootMethod {
         c = (boundB-boundA)/2;
 
         //find f(a)
-        double functionA = processFunction2(boundA);
+        functionA = processFunction2(boundA);
 
         //find f(b)
-        double functionB = processFunction2(boundB);
+        functionB = processFunction2(boundB);
 
         //find f(c)
-        double functionC = processFunction2(c);
+        functionC = processFunction2(c);
 
-        //compare values of f(a) and f(b)
-        if(functionC*functionA<0){
-            //root is to the left of the midpoint c
-            //replace a with c
-            setBoundA(c);
-        }else if(functionC*functionB<0){
-            //root is to the right of midpoint c
-            //replace b with c
-            setBoundB(c);
-        }
+        //calculate the error
+        calcError(boundA, boundB);
+
+        compareBounds(functionA, functionB, functionC, c);
     }
 
     //Error=b-a
@@ -51,10 +51,33 @@ public class Bisection extends RootMethod {
         error=(x1-x0);
     }
 
+    @Override
+    void displayGraph() {
+        System.out.println("n= "+iteration+" a: " + getBoundA()+ " b: " + getBoundB()
+        +" f(a): " + getFunctionA()+ " f(b): "+ getFunctionB()+" f(c): " + getFunctionC());
+        if(boundBoolean){
+            System.out.print(" f(a)*f(c): -" + "f(b)+f(c): +");
+        }else{
+            System.out.print(" f(a)*f(c): +" + "f(b)+f(c): -");
+        }
+        System.out.print(" Error: "+ getError());
+    }
+
     public double getC() {
         return c;
     }
     public void setC(double c) {
         this.c = c;
     }
+
+    public double getFunctionA() {
+        return functionA;
+    }
+    public double getFunctionB() {
+        return functionB;
+    }
+    public double getFunctionC() {
+        return functionC;
+    }
+ 
 }
