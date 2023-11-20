@@ -40,12 +40,12 @@ public abstract class RootMethod {
 
     void compareBounds(double functionA, double functionB, double functionC, double c){
         //compare values of f(a) and f(b)
-        if(functionC*functionA<0){
+        if(functionC<0){
             //root is to the left of the midpoint c
             //replace a with c
             setBoundA(c);
             boundBoolean=true;
-        }else if(functionC*functionB<0){
+        }else if(functionC>0){
             //root is to the right of midpoint c
             //replace b with c
             setBoundB(c);

@@ -1,5 +1,5 @@
 public class Bisection extends RootMethod {
-    private double c =0;
+    private double c =(boundB-boundA)/2;
     private double functionA=0;
     private double functionB=0;
     private double functionC=0;
@@ -8,7 +8,7 @@ public class Bisection extends RootMethod {
     @Override
     void findRoot1() {
 
-        c = (boundB-boundA)/2;
+        c = (boundB+boundA)/2;
 
         //find f(a)
         functionA = processFunction1(boundA);
@@ -18,9 +18,10 @@ public class Bisection extends RootMethod {
 
         //find f(c)
         functionC = processFunction1(c);
-
         //calculate the error
         calcError(boundA, boundB);
+        //display graph
+        displayGraph();
         //compare the bounds and replace one
         compareBounds(functionA, functionB, functionC, c);
         //iterate
@@ -29,7 +30,7 @@ public class Bisection extends RootMethod {
 
     @Override
     void findRoot2() {
-        c = (boundB-boundA)/2;
+        c = (boundB+boundA)/2;
 
         //find f(a)
         functionA = processFunction2(boundA);
@@ -39,9 +40,10 @@ public class Bisection extends RootMethod {
 
         //find f(c)
         functionC = processFunction2(c);
-
         //calculate the error
         calcError(boundA, boundB);
+        //display graph
+        displayGraph();
         //compare the bounds and replace one
         compareBounds(functionA, functionB, functionC, c);
         //iterate
@@ -57,13 +59,8 @@ public class Bisection extends RootMethod {
 
     @Override
     void displayGraph() {
-        System.out.println("n= "+iteration+" a: " + getBoundA()+ " b: " + getBoundB()
+        System.out.println("n= "+iteration+" a: " + getBoundA()+ " b: " + getBoundB() + " c: "+ getC()
         +" f(a): " + getFunctionA()+ " f(b): "+ getFunctionB()+" f(c): " + getFunctionC());
-        if(boundBoolean){
-            System.out.print(" f(a)*f(c): -" + "f(b)+f(c): +");
-        }else{
-            System.out.print(" f(a)*f(c): +" + "f(b)+f(c): -");
-        }
         System.out.println(" Error: "+ getError());
     }
 

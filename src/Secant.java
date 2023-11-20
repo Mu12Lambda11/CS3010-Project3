@@ -17,6 +17,8 @@ public class Secant extends RootMethod {
 
         calcError(xPrev, xi);
 
+        displayGraph();
+
         xPrev=xi;
         
     }
@@ -32,6 +34,8 @@ public class Secant extends RootMethod {
 
         calcError(xPrev, xi);
 
+        displayGraph();
+        
         xPrev=xi;
     }
     @Override

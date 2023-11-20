@@ -15,41 +15,47 @@ public class FalsePosition extends RootMethod {
         /(functionB-functionA));
 
         functionC=processFunction1(c);
-        
-        compareBounds(functionA, functionB, functionC, c);
 
         calcError(cPrev, c);
 
+        displayGraph();
+
         cPrev=c;
+
+        compareBounds(functionA, functionB, functionC, c);
     }
 
     @Override
     void findRoot2() {
-        double functionA=processFunction2(boundA);
-        double functionB=processFunction2(boundB);
+        functionA=processFunction2(boundA);
+        functionB=processFunction2(boundB);
         c=((boundA*functionB)-(boundB*functionA)
         /(functionB-functionA));
 
-        double functionC=processFunction2(c);
+        functionC=processFunction2(c);
         
-        compareBounds(functionA, functionB, functionC, c);
-
         calcError(cPrev, c);
-        
+
+        displayGraph();
+
         cPrev=c;
+
+        compareBounds(functionA, functionB, functionC, c);
     }
+    
     @Override
     void displayGraph() {
-        System.out.println("n= "+iteration+" a: " + getBoundA()+ " b: " + getBoundB()
+        System.out.println("n= "+iteration+" a: " + getBoundA()+ " b: " + getBoundB() + " c: "+ getC()
         +" f(a): " + getFunctionA()+ " f(b): "+ getFunctionB()+" f(c): " + getFunctionC());
-        if(boundBoolean){
-            System.out.print(" f(a)*f(c): -" + "f(b)+f(c): +");
-        }else{
-            System.out.print(" f(a)*f(c): +" + "f(b)+f(c): -");
-        }
         System.out.println(" Error: "+ getError());
     }
 
+    public double getC() {
+        return c;
+    }
+    public void setC(double c) {
+        this.c = c;
+    }
     public double getFunctionA() {
         return functionA;
     }

@@ -15,6 +15,8 @@ public class NewtonRaphson extends RootMethod {
         
         calcError(xPrev, xi);
 
+        displayGraph();
+
         xPrev=xi;
         
     }
@@ -28,6 +30,8 @@ public class NewtonRaphson extends RootMethod {
         xNext = xi-(functionX/derivativeX);
 
         calcError(xPrev, xi);
+
+        displayGraph();
 
         xPrev=xi;
     }
