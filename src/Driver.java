@@ -72,10 +72,14 @@ public class Driver {
         if(option==2){
             System.out.println("Bisection Method - Function 2");
             //Loop to process all necessary iterations
-            while(bisectionInstance.getIteration()<maxIterations||
-            bisectionInstance.getError()>stoppingError){
+            while(true){
                 bisectionInstance.findRoot2();
+                if(bisectionInstance.getIteration()>maxIterations||
+                bisectionInstance.getError()<stoppingError){
+                break;
+                }
             }
+            System.out.println("Root is: "+bisectionInstance.getC());
         }
     }
     
@@ -86,62 +90,88 @@ public class Driver {
         if(option==1){
             System.out.println("False Position Method - Function 1");
             //Loop to process all necessary iterations
-            while(falseInstance.getIteration()<maxIterations||
-            falseInstance.getError()>stoppingError){
+            while(true){
                 falseInstance.findRoot1();
+                if(falseInstance.getIteration()>maxIterations||
+            falseInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+falseInstance.getC());
         }
         if(option==2){
             System.out.println("False Position Method - Function 2");
             //Loop to process all necessary iterations
-            while(falseInstance.getIteration()<maxIterations||
-            falseInstance.getError()>stoppingError){
+            while(true){
                 falseInstance.findRoot2();
+                if(falseInstance.getIteration()>maxIterations||
+            falseInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+falseInstance.getC());
         }
     }
 
     static void useNewton(){
         NewtonRaphson newtonInstance = new NewtonRaphson();
-        setBounds(newtonInstance);
+        newtonInstance.setxPrev(promptInitValueX0());
+        newtonInstance.setXi(promptInitValueX1());
         int option = selectFunction();
         if(option==1){
             System.out.println("Newton-Raphson Method - Function 1");
             //Loop to process all necessary iterations
-            while(newtonInstance.getIteration()<maxIterations||
-            newtonInstance.getError()>stoppingError){
+            while(true){
                 newtonInstance.findRoot1();
+                if(newtonInstance.getIteration()>maxIterations||
+            newtonInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+newtonInstance.getxNext());
         }
         if(option==2){
             System.out.println("Newton-Raphson Method - Function 2");
             //Loop to process all necessary iterations
-            while(newtonInstance.getIteration()<maxIterations||
-            newtonInstance.getError()>stoppingError){
+            while(true){
                 newtonInstance.findRoot2();
+                if(newtonInstance.getIteration()>maxIterations||
+            newtonInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+newtonInstance.getxNext());
         }
     }
 
     static void useSecant(){
         Secant secantInstance = new Secant();
-        setBounds(secantInstance);
+        secantInstance.setxPrev(promptInitValueX0());
+        secantInstance.setXi(promptInitValueX1());
         int option = selectFunction();
         if(option==1){
             System.out.println("Secant Method - Function 1");
             //Loop to process all necessary iterations
-            while(secantInstance.getIteration()<maxIterations||
-            secantInstance.getError()>stoppingError){
+            while(true){
                 secantInstance.findRoot1();
+                if(secantInstance.getIteration()>maxIterations||
+            secantInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+secantInstance.getxNext());
         }
         if(option==2){
             System.out.println("Secant Method - Function 2");
             //Loop to process all necessary iterations
-            while(secantInstance.getIteration()<maxIterations||
-            secantInstance.getError()>stoppingError){
+            while(true){
                 secantInstance.findRoot2();
+                if(secantInstance.getIteration()>maxIterations||
+            secantInstance.getError()<stoppingError){
+                break;
             }
+            }
+            System.out.println("Root is: "+secantInstance.getxNext());
         }
     }
 
@@ -160,5 +190,14 @@ public class Driver {
         method.setBoundA(input.nextInt());
         System.out.println("Please set the upper bound b");
         method.setBoundB(input.nextInt());
+    }
+
+    static int promptInitValueX0(){
+        System.out.println("Please set an initial value x0 to use");
+        return input.nextInt();
+    }
+    static int promptInitValueX1(){
+        System.out.println("Please set an initial value x1 to use");
+        return input.nextInt();
     }
 }

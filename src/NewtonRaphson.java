@@ -18,6 +18,9 @@ public class NewtonRaphson extends RootMethod {
         displayGraph();
 
         xPrev=xi;
+        xi=xNext;
+
+        iteration++;
         
     }
 
@@ -34,11 +37,14 @@ public class NewtonRaphson extends RootMethod {
         displayGraph();
 
         xPrev=xi;
+        xi=xNext;
+
+        iteration++;
     }
 
     @Override
     void displayGraph() {
-        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
+        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+" xi+1: "+getxNext()
         +" f(x): " + getFunctionX()+ " f'(x): "+ getDerivativeX());
 
         System.out.println(" Error: "+ getError());
@@ -46,7 +52,6 @@ public class NewtonRaphson extends RootMethod {
 
    
     double processDerivative1(double x){
-        System.out.println("6x^2-23.4x+17.7");
         double tempDouble=0;
 
         tempDouble = (6*Math.pow(x, 2)-(23.4*x)+17.7);
@@ -54,7 +59,6 @@ public class NewtonRaphson extends RootMethod {
     }
 
     double processDerivative2(double x){
-        System.out.println("[(50sinh(50/x))/x]-cosh(50/x)+1");
         double tempDouble=0;
 
         tempDouble=(((50*Math.sinh(50/x))/x) - Math.cosh(50/x)+1);
@@ -66,6 +70,9 @@ public class NewtonRaphson extends RootMethod {
     }
     public void setxNext(double xNext) {
         this.xNext = xNext;
+    }
+    public void setxPrev(double xPrev) {
+        this.xPrev = xPrev;
     }
     public void setXi(double xi) {
         this.xi = xi;

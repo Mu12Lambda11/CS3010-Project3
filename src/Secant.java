@@ -13,13 +13,16 @@ public class Secant extends RootMethod {
         functionX = processFunction1(xi);
         functionXPrev= processFunction1(xPrev);
 
-        xNext=(xi-functionX)/((functionX-functionXPrev)/(xi-xPrev));
+        xNext=xi-(functionX/((functionX-functionXPrev)/(xi-xPrev)));
 
         calcError(xPrev, xi);
 
         displayGraph();
 
         xPrev=xi;
+        xi=xNext;
+
+        iteration++;
         
     }
 
@@ -30,17 +33,20 @@ public class Secant extends RootMethod {
         functionX = processFunction2(xi);
         functionXPrev= processFunction2(xPrev);
 
-        xNext=(xi-functionX)/((functionX-functionXPrev)/(xi-xPrev));
+        xNext=xi-(functionX/((functionX-functionXPrev)/(xi-xPrev)));
 
         calcError(xPrev, xi);
 
         displayGraph();
         
         xPrev=xi;
+        xi=xNext;
+
+        iteration++;
     }
     @Override
     void displayGraph() {
-        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
+        System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+" xi+1: "+getxNext()
         +" f(x): " + getFunctionX()+ " f(xi-1): "+ getFunctionXPrev());
 
         System.out.println(" Error: "+ getError());
@@ -51,6 +57,12 @@ public class Secant extends RootMethod {
     }
     public void setxNext(double xNext) {
         this.xNext = xNext;
+    }
+    public void setxPrev(double xPrev) {
+        this.xPrev = xPrev;
+    }
+    public void setXi(double xi) {
+        this.xi = xi;
     }
     public double getXi() {
         return xi;

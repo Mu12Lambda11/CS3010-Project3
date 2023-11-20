@@ -11,8 +11,8 @@ public class FalsePosition extends RootMethod {
     void findRoot1() {
         functionA=processFunction1(boundA);
         functionB=processFunction1(boundB);
-        c=((boundA*functionB)-(boundB*functionA)
-        /(functionB-functionA));
+        c=((boundA*functionB)-(boundB*functionA))
+        /(functionB-functionA);
 
         functionC=processFunction1(c);
 
@@ -23,14 +23,16 @@ public class FalsePosition extends RootMethod {
         cPrev=c;
 
         compareBounds(functionA, functionB, functionC, c);
+
+        iteration++;
     }
 
     @Override
     void findRoot2() {
         functionA=processFunction2(boundA);
         functionB=processFunction2(boundB);
-        c=((boundA*functionB)-(boundB*functionA)
-        /(functionB-functionA));
+        c=((boundA*functionB)-(boundB*functionA))
+        /(functionB-functionA);
 
         functionC=processFunction2(c);
         
@@ -41,6 +43,8 @@ public class FalsePosition extends RootMethod {
         cPrev=c;
 
         compareBounds(functionA, functionB, functionC, c);
+
+        iteration++;
     }
     
     @Override
@@ -49,6 +53,7 @@ public class FalsePosition extends RootMethod {
         +" f(a): " + getFunctionA()+ " f(b): "+ getFunctionB()+" f(c): " + getFunctionC());
         System.out.println(" Error: "+ getError());
     }
+
 
     public double getC() {
         return c;
