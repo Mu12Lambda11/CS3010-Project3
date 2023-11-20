@@ -21,8 +21,10 @@ public class Bisection extends RootMethod {
 
         //calculate the error
         calcError(boundA, boundB);
-
+        //compare the bounds and replace one
         compareBounds(functionA, functionB, functionC, c);
+        //iterate
+        iteration++;
     }
 
     @Override
@@ -40,8 +42,10 @@ public class Bisection extends RootMethod {
 
         //calculate the error
         calcError(boundA, boundB);
-
+        //compare the bounds and replace one
         compareBounds(functionA, functionB, functionC, c);
+        //iterate
+        iteration++;
     }
 
     //Error=b-a

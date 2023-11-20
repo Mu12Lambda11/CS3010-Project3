@@ -5,7 +5,7 @@ public abstract class RootMethod {
     protected double error = 0;
     protected double boundA=0;
     protected double boundB=0;
-    protected double iteration=0;
+    protected int iteration=0;
     protected Boolean boundBoolean=false;
 
     //Method to process the function

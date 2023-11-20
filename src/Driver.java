@@ -2,42 +2,38 @@ import java.util.Scanner;
 
 public class Driver {
     static Scanner input = new Scanner(System.in);
+    static int maxIterations=100;
+    static double stoppingError =.01;
     public static void main(String[] args) {
 
-        double stoppingError =.05;
         boolean continueProcess=true;
+        
 
         while(continueProcess){
             System.out.println("Welcome! Please select your desired root finding method.");
             System.out.println("1.Bisection 2.False Position 3.Newton-Raphson 4.Secant");
             int selection = input.nextInt();
 
-            System.out.println("Please enter a desired stopping error. Default is .05");
-            if(input.nextLine()==null){
-                
-            }else{
-                stoppingError=input.nextInt();
-            }
 
             switch (selection) {
                 case 1:
                     System.out.println("Bisection has been chosen");
-                    useBisection(stoppingError);
+                    useBisection();
                     break;
                 
                 case 2:
                     System.out.println("False Position has been chosen");
-                    useFalsePosition(stoppingError);
+                    useFalsePosition();
                     break;
 
                 case 3:
                     System.out.println("Newton-Raphson has been chosen");
-                    useNewton(stoppingError);
+                    useNewton();
                     break;
 
                 case 4:
                     System.out.println("Secant has been chosen");
-                    useSecant(stoppingError);
+                    useSecant();
                     break;
             
                 default:
@@ -55,30 +51,98 @@ public class Driver {
         }
         
     }
-    static void useBisection(double givenError){
+    static void useBisection(){
+        //initialize the method object and set bounds
         Bisection bisectionInstance = new Bisection();
         setBounds(bisectionInstance);
+
         if(selectFunction()==1){
-            
+            System.out.println("Bisection Method - Function 1");
+            while(bisectionInstance.getIteration()<maxIterations||
+            bisectionInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                bisectionInstance.displayGraph();
+                bisectionInstance.findRoot1();
+            }
         }
         if(selectFunction()==2){
-
+            System.out.println("Bisection Method - Function 2");
+            while(bisectionInstance.getIteration()<maxIterations||
+            bisectionInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                bisectionInstance.displayGraph();
+                bisectionInstance.findRoot2();
+            }
         }
     }
     
-    static void useFalsePosition(double givenError){
+    static void useFalsePosition(){
         FalsePosition falseInstance = new FalsePosition();
         setBounds(falseInstance);
+        if(selectFunction()==1){
+            System.out.println("Bisection Method - Function 1");
+            while(falseInstance.getIteration()<maxIterations||
+            falseInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                falseInstance.displayGraph();
+                falseInstance.findRoot1();
+            }
+        }
+        if(selectFunction()==2){
+            System.out.println("Bisection Method - Function 2");
+            while(falseInstance.getIteration()<maxIterations||
+            falseInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                falseInstance.displayGraph();
+                falseInstance.findRoot2();
+            }
+        }
     }
 
-    static void useNewton(double givenError){
+    static void useNewton(){
         NewtonRaphson newtonInstance = new NewtonRaphson();
         setBounds(newtonInstance);
+        if(selectFunction()==1){
+            System.out.println("Bisection Method - Function 1");
+            while(newtonInstance.getIteration()<maxIterations||
+            newtonInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                newtonInstance.displayGraph();
+                newtonInstance.findRoot1();
+            }
+        }
+        if(selectFunction()==2){
+            System.out.println("Bisection Method - Function 2");
+            while(newtonInstance.getIteration()<maxIterations||
+            newtonInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                newtonInstance.displayGraph();
+                newtonInstance.findRoot2();
+            }
+        }
     }
 
-    static void useSecant(double givenError){
+    static void useSecant(){
         Secant secantInstance = new Secant();
         setBounds(secantInstance);
+        if(selectFunction()==1){
+            System.out.println("Bisection Method - Function 1");
+            while(secantInstance.getIteration()<maxIterations||
+            secantInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                secantInstance.displayGraph();
+                secantInstance.findRoot1();
+            }
+        }
+        if(selectFunction()==2){
+            System.out.println("Bisection Method - Function 2");
+            while(secantInstance.getIteration()<maxIterations||
+            secantInstance.getError()>stoppingError){
+                //display graph and handle calculations
+                secantInstance.displayGraph();
+                secantInstance.findRoot2();
+            }
+        }
     }
 
     static int selectFunction(){
