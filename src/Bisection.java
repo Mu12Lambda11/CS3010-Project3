@@ -11,13 +11,13 @@ public class Bisection extends RootMethod {
         c = (boundB-boundA)/2;
 
         //find f(a)
-        double functionA = processFunction1(boundA);
+        functionA = processFunction1(boundA);
 
         //find f(b)
-        double functionB = processFunction1(boundB);
+        functionB = processFunction1(boundB);
 
         //find f(c)
-        double functionC = processFunction1(c);
+        functionC = processFunction1(c);
 
         //calculate the error
         calcError(boundA, boundB);
@@ -64,7 +64,7 @@ public class Bisection extends RootMethod {
         }else{
             System.out.print(" f(a)*f(c): +" + "f(b)+f(c): -");
         }
-        System.out.print(" Error: "+ getError());
+        System.out.println(" Error: "+ getError());
     }
 
     public double getC() {
@@ -77,8 +77,14 @@ public class Bisection extends RootMethod {
     public double getFunctionA() {
         return functionA;
     }
+    public void setFunctionA(double functionA) {
+        this.functionA = functionA;
+    }
     public double getFunctionB() {
         return functionB;
+    }
+    public void setFunctionB(double functionB) {
+        this.functionB = functionB;
     }
     public double getFunctionC() {
         return functionC;

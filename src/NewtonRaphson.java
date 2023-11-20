@@ -37,7 +37,7 @@ public class NewtonRaphson extends RootMethod {
         System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
         +" f(x): " + getFunctionX()+ " f'(x): "+ getDerivativeX());
 
-        System.out.print(" Error: "+ getError());
+        System.out.println(" Error: "+ getError());
     }
 
    
@@ -75,7 +75,13 @@ public class NewtonRaphson extends RootMethod {
     public double getFunctionX() {
         return functionX;
     }
+    public void setFunctionX(double functionX) {
+        this.functionX = functionX;
+    }
     public double getDerivativeX() {
         return derivativeX;
+    }
+    public void setDerivativeX(double derivativeX) {
+        this.derivativeX = derivativeX;
     }
 }

@@ -58,6 +58,10 @@ public class Driver {
 
         if(selectFunction()==1){
             System.out.println("Bisection Method - Function 1");
+            //preliminarily process some variables
+            bisectionInstance.setFunctionA(bisectionInstance.processFunction1(bisectionInstance.getBoundA()));
+            bisectionInstance.setFunctionB(bisectionInstance.processFunction1(bisectionInstance.getBoundB()));
+            //Loop to process all necessary iterations
             while(bisectionInstance.getIteration()<maxIterations||
             bisectionInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -67,6 +71,10 @@ public class Driver {
         }
         if(selectFunction()==2){
             System.out.println("Bisection Method - Function 2");
+            //preliminarily process some variables
+            bisectionInstance.setFunctionA(bisectionInstance.processFunction2(bisectionInstance.getBoundA()));
+            bisectionInstance.setFunctionB(bisectionInstance.processFunction2(bisectionInstance.getBoundB()));
+            //Loop to process all necessary iterations
             while(bisectionInstance.getIteration()<maxIterations||
             bisectionInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -80,7 +88,11 @@ public class Driver {
         FalsePosition falseInstance = new FalsePosition();
         setBounds(falseInstance);
         if(selectFunction()==1){
-            System.out.println("Bisection Method - Function 1");
+            System.out.println("False Position Method - Function 1");
+            //preliminarily process some variables
+            falseInstance.setFunctionA(falseInstance.processFunction1(falseInstance.getBoundA()));
+            falseInstance.setFunctionB(falseInstance.processFunction1(falseInstance.getBoundB()));
+            //Loop to process all necessary iterations
             while(falseInstance.getIteration()<maxIterations||
             falseInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -89,7 +101,11 @@ public class Driver {
             }
         }
         if(selectFunction()==2){
-            System.out.println("Bisection Method - Function 2");
+            System.out.println("False Position Method - Function 2");
+            //preliminarily process some variables
+            falseInstance.setFunctionA(falseInstance.processFunction2(falseInstance.getBoundA()));
+            falseInstance.setFunctionB(falseInstance.processFunction2(falseInstance.getBoundB()));
+            //Loop to process all necessary iterations
             while(falseInstance.getIteration()<maxIterations||
             falseInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -103,7 +119,11 @@ public class Driver {
         NewtonRaphson newtonInstance = new NewtonRaphson();
         setBounds(newtonInstance);
         if(selectFunction()==1){
-            System.out.println("Bisection Method - Function 1");
+            System.out.println("Newton-Raphson Method - Function 1");
+            //preliminarily process some variables
+            newtonInstance.setFunctionX(newtonInstance.processFunction1(newtonInstance.getXi()));
+            newtonInstance.setDerivativeX(newtonInstance.processDerivative1(newtonInstance.getXi()));
+            //Loop to process all necessary iterations
             while(newtonInstance.getIteration()<maxIterations||
             newtonInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -112,7 +132,11 @@ public class Driver {
             }
         }
         if(selectFunction()==2){
-            System.out.println("Bisection Method - Function 2");
+            System.out.println("Newton-Raphson Method - Function 2");
+            //preliminarily process some variables
+            newtonInstance.setFunctionX(newtonInstance.processFunction2(newtonInstance.getXi()));
+            newtonInstance.setDerivativeX(newtonInstance.processDerivative2(newtonInstance.getXi()));
+            //Loop to process all necessary iterations
             while(newtonInstance.getIteration()<maxIterations||
             newtonInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -126,7 +150,11 @@ public class Driver {
         Secant secantInstance = new Secant();
         setBounds(secantInstance);
         if(selectFunction()==1){
-            System.out.println("Bisection Method - Function 1");
+            System.out.println("Secant Method - Function 1");
+            //preliminarily process some variables
+            secantInstance.setFunctionX(secantInstance.processFunction1(secantInstance.getXi()));
+            secantInstance.setFunctionXPrev(secantInstance.processFunction1(secantInstance.getxPrev()));
+            //Loop to process all necessary iterations
             while(secantInstance.getIteration()<maxIterations||
             secantInstance.getError()>stoppingError){
                 //display graph and handle calculations
@@ -135,7 +163,11 @@ public class Driver {
             }
         }
         if(selectFunction()==2){
-            System.out.println("Bisection Method - Function 2");
+            System.out.println("Secant Method - Function 2");
+            //preliminarily process some variables
+            secantInstance.setFunctionX(secantInstance.processFunction2(secantInstance.getXi()));
+            secantInstance.setFunctionXPrev(secantInstance.processFunction2(secantInstance.getxPrev()));
+            //Loop to process all necessary iterations
             while(secantInstance.getIteration()<maxIterations||
             secantInstance.getError()>stoppingError){
                 //display graph and handle calculations

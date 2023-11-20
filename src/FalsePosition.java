@@ -47,14 +47,20 @@ public class FalsePosition extends RootMethod {
         }else{
             System.out.print(" f(a)*f(c): +" + "f(b)+f(c): -");
         }
-        System.out.print(" Error: "+ getError());
+        System.out.println(" Error: "+ getError());
     }
 
     public double getFunctionA() {
         return functionA;
     }
+    public void setFunctionA(double functionA) {
+        this.functionA = functionA;
+    }
     public double getFunctionB() {
         return functionB;
+    }
+    public void setFunctionB(double functionB) {
+        this.functionB = functionB;
     }
     public double getFunctionC() {
         return functionC;

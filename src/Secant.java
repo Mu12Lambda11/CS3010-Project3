@@ -39,7 +39,7 @@ public class Secant extends RootMethod {
         System.out.println("n= "+iteration+" xi: " + getXi()+ " xi-1: " + getxPrev()+"xi+1"+getxNext()
         +" f(x): " + getFunctionX()+ " f(xi-1): "+ getFunctionXPrev());
 
-        System.out.print(" Error: "+ getError());
+        System.out.println(" Error: "+ getError());
     }
     
     public double getxNext() {
@@ -57,7 +57,13 @@ public class Secant extends RootMethod {
     public double getFunctionX() {
         return functionX;
     }
+    public void setFunctionX(double functionX) {
+        this.functionX = functionX;
+    }
     public double getFunctionXPrev() {
         return functionXPrev;
+    }
+    public void setFunctionXPrev(double functionXPrev) {
+        this.functionXPrev = functionXPrev;
     }
 }
